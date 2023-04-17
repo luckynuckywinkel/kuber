@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Release.Name }}-service
+  namespace: default
+  labels:
+    app: redis
+spec:
+  externalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: {{ .Values.service.port }}
+    protocol: {{ .Values.service.protocol | default "TCP" }}
+    targetPort: {{ .Values.service.targetPort }}
+  selector:
+    app: redis
+  type: NodePort
