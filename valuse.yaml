@@ -1,0 +1,13 @@
+replicaCount: 1
+
+image:
+  repository: bitnami/redis
+  tag: "6.0.13"
+  pullPolicy: Always
+
+service:
+  port: 80
+  targetPort: 6379
+
+env:
+  name: dev
